@@ -1,0 +1,36 @@
+[project]
+name = "demanda-electrica-model"
+version = "0.1.0"
+description = "Day-ahead forecasting pipeline for Spanish electricity demand (ENTSO-E + AEMET)"
+readme = "README.md"
+authors = [
+    { name = "Marcos Expósito", email = "expositomarcos02@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "entsoe-py>=0.8.0",
+    "lightgbm>=4.7.0",
+    "pandas>=3.0.5",
+    "polars>=1.43.2",
+    "pyarrow>=25.0.1",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+    "scikit-learn>=1.9.0",
+]
+
+[project.scripts]
+demanda-electrica-model = "demanda_electrica_model:main"
+ingest-aemet = "demanda_electrica_model.ingest_aemet:main"
+ingest-aemet-historico = "demanda_electrica_model.ingest_aemet_historico:main"
+ingest-entsoe-historico = "demanda_electrica_model.ingest_entsoe_historico:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.3.0",
+    "pytest>=9.1.1",
+    "ruff>=0.16.2",
+]
